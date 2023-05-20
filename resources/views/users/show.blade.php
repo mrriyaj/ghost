@@ -12,6 +12,7 @@
                     <h3 class="text-lg font-semibold mb-4">User Details</h3>
                     <p><strong>Name:</strong> {{ $user->name }}</p>
                     <p><strong>Email:</strong> {{ $user->email }}</p>
+                    <p><strong>Role:</strong> {{ $user->role }}</p>
                 </div>
             </div>
         </div>

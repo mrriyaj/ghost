@@ -13,18 +13,26 @@
                     <form action="{{ route('users.store') }}" method="POST">
                         @csrf
                         <div class="mb-4">
-                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
-                            <input type="text" name="name" id="name" class="border-gray-300 dark:border-gray-700 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm rounded-md">
+                            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                            <input type="text" name="name" id="name" class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300">
                         </div>
                         <div class="mb-4">
-                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                            <input type="email" name="email" id="email" class="border-gray-300 dark:border-gray-700 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm rounded-md">
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                            <input type="email" name="email" id="email" class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300">
                         </div>
                         <div class="mb-4">
-                            <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
-                            <input type="password" name="password" id="password" class="border-gray-300 dark:border-gray-700 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm rounded-md">
+                            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+                            <input type="password" name="password" id="password" class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300">
                         </div>
-                        <div>
+                        <div class="mb-4">
+                            <label for="role" class="block text-gray-700 text-sm font-bold mb-2">Role:</label>
+                            <select name="role" id="role" class="border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300">
+                                <option value="super_admin">Super Admin</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center justify-end">
                             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Create</button>
                         </div>
                     </form>

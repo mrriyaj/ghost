@@ -4,58 +4,91 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
     public function index()
     {
+        $this->authorize('manage_users'); // Check if the user is authorized to manage users
+
         $users = User::all();
+
         return view('users.index', compact('users'));
     }
 
     public function create()
     {
+        $this->authorize('manage_users'); // Check if the user is authorized to manage users
+
         return view('users.create');
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $this->authorize('manage_users'); // Check if the user is authorized to manage users
+
+        // Validate the request data
+        $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'required|min:8',
+            'role' => 'required|in:super_admin,admin,user',
         ]);
 
-        $user = User::create($validatedData);
+        // Create a new user
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => $request->role,
+        ]);
 
         return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
 
     public function show(User $user)
     {
+        $this->authorize('manage_users'); // Check if the user is authorized to manage users
+
         return view('users.show', compact('user'));
     }
 
     public function edit(User $user)
     {
+        $this->authorize('manage_users'); // Check if the user is authorized to manage users
+
         return view('users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
     {
-        $validatedData = $request->validate([
+        $this->authorize('manage_users'); // Check if the user is authorized to manage users
+
+        // Validate the request data
+        $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'nullable|min:6',
+            'password' => 'nullable|min:8',
+            'role' => 'required|in:super_admin,admin,user',
         ]);
 
-        $user->update($validatedData);
+        // Update the user
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+        $user->role = $request->role;
+        $user->save();
 
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
 
     public function destroy(User $user)
     {
+        $this->authorize('manage_users'); // Check if the user is authorized to manage users
+
         $user->delete();
 
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
