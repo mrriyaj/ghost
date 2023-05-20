@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold mb-4">All Tracker Records</h3>
-                    <a href="{{ route('trackers.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mb-4">Create Record</a>
+                    <a href="{{ route('trackers.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mb-4 inline-block">Create Record</a>
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-100">
                             <tr>
