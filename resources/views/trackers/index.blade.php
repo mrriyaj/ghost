@@ -45,12 +45,12 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $tracker->country }}, {{ $tracker->countryCode }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $tracker->timezone }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <a href="{{ route('trackers.show', $tracker) }}" class="text-blue-500 hover:text-blue-600">View</a>
-                                        <a href="{{ route('trackers.edit', $tracker) }}" class="text-yellow-500 hover:text-yellow-600">Edit</a>
+                                        <a href="{{ route('trackers.show', $tracker) }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mr-2">View</a>
+                                        <a href="{{ route('trackers.edit', $tracker) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md mr-2">Edit</a>
                                         <form action="{{ route('trackers.destroy', $tracker) }}" method="POST" class="inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-500 hover:text-red-600">Delete</button>
+                                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

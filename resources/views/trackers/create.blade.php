@@ -11,7 +11,6 @@
                 <div class="p-6">
                     <h3 class="text-lg font-semibold mb-4">Create Tracker</h3>
                     <button onclick="lookup()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Lookup My IP</button>
-                    <h3>Results:</h3>
                     <div id="results"></div>
                     <br>
                     <form action="{{ route('trackers.store') }}" method="POST">
