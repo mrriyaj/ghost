@@ -7,17 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tracker extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
+        'date_time',
         'user_id',
         'ip_address',
-        'location',
-        'browser_fingerprint',
-        'device_type',
-        'operating_system',
-        'network_ip_address',
-        'network_location',
-        'network_type',
+        'city',
+        'country',
+        'countryCode',
+        'regionName',
+        'zip',
+        'lat',
+        'lon',
+        'timezone',
         'isp',
+        'org',
+        'as',
+        'browser'
     ];
 
     public function user()

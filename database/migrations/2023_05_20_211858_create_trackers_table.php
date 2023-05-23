@@ -6,26 +6,39 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTrackersTable extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('trackers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->timestamp('date_time');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('ip_address');
-            $table->string('location')->nullable();
-            $table->string('browser_fingerprint')->nullable();
-            $table->string('device_type')->nullable();
-            $table->string('operating_system')->nullable();
-            $table->string('network_ip_address')->nullable();
-            $table->string('network_location')->nullable();
-            $table->string('network_type')->nullable();
+            $table->string('city');
+            $table->string('country');
+            $table->string('countryCode')->nullable();
+            $table->string('regionName')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lon')->nullable();
+            $table->string('timezone')->nullable();
             $table->string('isp')->nullable();
-            $table->timestamp('created_at')->useCurrent();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('org')->nullable();
+            $table->string('as')->nullable();
+            $table->string('browser')->nullable();
+            $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('trackers');
