@@ -18,6 +18,9 @@
                 <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                     {{ __('Users') }}
                 </x-nav-link>
+                <x-nav-link :href="route('trackers.index')" :active="request()->routeIs('trackers.*')">
+                    {{ __('Tracker') }}
+                </x-nav-link>
             </div>
 
             <!-- Settings Dropdown -->
